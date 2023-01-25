@@ -58,18 +58,31 @@ function reset_error() {
   hide_element('errorPanel');
 }
 
+//is the first function that is called when the page loads.
+  // It sets the domainOrigin field to the current domain.
+  // It hides the connectSuccess and searchSuccess divs.
+  // It checks to see if the page is being loaded from an HTTP or HTTPS server.
+
 function init_keyword_search_js() {
   fill_element('domainOrigin', document.location.protocol + '//' + document.location.host);
   reset_error();
   hide_element('connectSuccess');
   hide_element('searchSuccess');
-  
+
+      // If the page is not loaded, it shows an error message and hides the accountForm div.
+
   if (document.location.protocol != 'http:' && document.location.protocol != 'https:') {
     show_error('You must run this demo from an HTTP or HTTPS server.');
     hide_element('accountForm');
     return;
   }
-  
+
+    //1. It's creating a new instance of the OnetWebService class, passing in the username.
+    //2. It's calling the about method on the OnetWebService instance, passing in a callback function.
+    //3. The callback function is called when the about method returns.
+    //4. The callback function checks for an error, and if there is one, it displays it.
+    //5. If there is no error, the callback function fills in the version number and shows the success message.
+
   attach_event('accountForm', 'submit', function(e) {
     e.preventDefault();
     if (button_is_disabled('accountConnect')) { return; }
@@ -92,7 +105,18 @@ function init_keyword_search_js() {
       show_element('connectSuccess');
     });
   });
-  
+
+   /* 1. oNet App is creating a new instance of the class, and passing in the name of the form.
+    2. It's attaching an event handler to the form's submit event.
+    3. It's preventing the default action of the form (which is to submit the form).
+    4. It's checking to see if the submit button is disabled. If it is, it returns.
+    5. It's resetting the error message.
+    6. It's hiding the success message.
+    7. It's hiding the "no results" message.
+    8. It's hiding the results table.
+    9. It's reading the value of the search query input.
+    10. It's checking to see if the search query is empty. If it is, it shows an error message and returns.*/
+
   attach_event('searchForm', 'submit', function(e) {
     e.preventDefault();
     if (button_is_disabled('searchSubmit')) { return; }
