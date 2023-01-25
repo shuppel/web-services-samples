@@ -1,28 +1,42 @@
 "use strict";
+//Keyword Search.js is going to provide several JS functions that as a library can be called by other parts of the program. 
+//They are a set of functions that allow the user to interact with the webpage.
 
 var onet_ws = null;
 
+//hides the element with the id that is passed in as an argument.
 function hide_element(id) {
   document.getElementById(id).classList.add('d-none');
 }
+
+//removes the class 'd-none' from the element with the id 'id'.
 function show_element(id) {
   document.getElementById(id).classList.remove('d-none');
 }
+
+//fills the element with the id with the text
 function fill_element(id, text) {
   document.getElementById(id).textContent = text;
 }
+
+ // read_input, allows the user to input text into the webpage.
 function read_input(id) {
-  return document.getElementById(id).value;
+    return document.getElementById(id).value;
 }
+
+ // disable_button, allows the user to disable a button.
 function disable_button(id) {
   document.getElementById(id).disabled = true;
 }
+ // enable_button, allows the user to enable a button.
 function enable_button(id) {
   document.getElementById(id).disabled = false;
 }
+ // button_is_disabled, allows the user to check if a button is disabled.
 function button_is_disabled(id) {
   return document.getElementById(id).disabled;
 }
+ // attach_event, allows the user to attach an event to a button.
 function attach_event(id, eventname, callback) {
   document.getElementById(id).addEventListener(eventname, callback);
 }
